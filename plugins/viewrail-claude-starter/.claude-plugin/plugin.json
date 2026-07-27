@@ -1,0 +1,9 @@
+{
+  "name": "viewrail-claude-starter",
+  "version": "0.3.1",
+  "description": "System-setup skills for the Viewrail Claude Starter Package. Includes personalize (first-run onboarding for new workspaces), adopt-standard (one-time alignment for existing workspaces), and audit-workspace (re-runnable health check). Designed to be installed alongside the Viewrail Claude Workspace zip.",
+  "author": {
+    "name": "Garrett Ledbetter"
+  },
+  "keywords": ["viewrail", "onboarding", "workspace-setup", "claude-cowork"]
+}

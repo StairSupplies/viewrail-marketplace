@@ -17,6 +17,13 @@
       "description": "Redistributes Viewrail order dollars across Terminal shipments end-to-end (fresh split or change-order repush), reconciled to the active quote, behind one PM confirmation gate.",
       "version": "1.2.1",
       "keywords": ["viewrail", "terminal", "order-split", "project-management"]
+    },
+    {
+      "name": "viewrail-claude-starter",
+      "source": "./plugins/viewrail-claude-starter",
+      "description": "System-setup skills for the Viewrail Claude Starter Package. Includes personalize (first-run onboarding for new workspaces), adopt-standard (one-time alignment for existing workspaces), and audit-workspace (re-runnable health check). Designed to be installed alongside the Viewrail Claude Workspace zip.",
+      "version": "0.3.1",
+      "keywords": ["viewrail", "onboarding", "workspace-setup", "claude-cowork"]
     }
   ]
 }
