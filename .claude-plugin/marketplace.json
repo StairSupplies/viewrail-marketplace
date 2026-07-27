@@ -8,8 +8,14 @@
       "name": "leadership-coach",
       "source": "./plugins/leadership-coach",
       "description": "A coaching partner for Viewrail leaders. Prepare for difficult conversations, build change narratives, practice through role play, and develop your team, all grounded in the six Leadership Performance Drivers.",
-      "version": "0.1.0",
-      "keywords": ["leadership", "coaching", "viewrail", "performance", "development"]
+      "version": "0.1.1",
+      "keywords": [
+        "leadership",
+        "coaching",
+        "viewrail",
+        "performance",
+        "development"
+      ]
     }
   ]
 }
