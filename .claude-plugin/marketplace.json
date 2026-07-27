@@ -5,13 +5,6 @@
   },
   "plugins": [
     {
-      "name": "a3-problem-solving",
-      "source": "./plugins/a3-problem-solving",
-      "description": "Conversational A3 Problem-Solving Report skill for Viewrail leaders. Walks the user through all 7 A3 sections with lean coaching pushback, produces a polished DOCX in Viewrail blue/gold landscape style, and submits to the shared Viewrail A3 Library on Drive.",
-      "version": "0.1.0",
-      "keywords": ["a3", "lean", "continuous-improvement", "viewrail", "problem-solving", "hoshin", "ci"]
-    },
-    {
       "name": "leadership-coach",
       "source": "./plugins/leadership-coach",
       "description": "A coaching partner for Viewrail leaders. Prepare for difficult conversations, build change narratives, practice through role play, and develop your team, all grounded in the six Leadership Performance Drivers.",
