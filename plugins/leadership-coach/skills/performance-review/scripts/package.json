@@ -1,0 +1,8 @@
+{
+  "name": "difficult-conversation-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for the difficult-conversation skill",
+  "dependencies": {
+    "docx": "^9.0.0"
+  }
+}
