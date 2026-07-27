@@ -1,0 +1,71 @@
+name: Version bump check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-version-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve comparison ref
+        id: base
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "sha=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          else
+            before="${{ github.event.before }}"
+            if [ "$before" = "0000000000000000000000000000000000000000" ]; then
+              echo "First push to this branch — nothing to compare against; passing by default."
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "sha=$before" >> "$GITHUB_OUTPUT"
+              echo "skip=false" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Check leadership-coach version bump
+        if: steps.base.outputs.skip != 'true'
+        run: |
+          BASE="${{ steps.base.outputs.sha }}"
+
+          if git diff --quiet "$BASE" HEAD -- plugins/leadership-coach/; then
+            echo "No changes to plugins/leadership-coach/ — no version bump required."
+            exit 0
+          fi
+
+          echo "plugins/leadership-coach/ changed — verifying both version fields were bumped."
+
+          old_plugin_version=$(git show "$BASE:plugins/leadership-coach/.claude-plugin/plugin.json" | jq -r '.version')
+          new_plugin_version=$(jq -r '.version' plugins/leadership-coach/.claude-plugin/plugin.json)
+
+          old_marketplace_version=$(git show "$BASE:.claude-plugin/marketplace.json" | jq -r '.plugins[] | select(.name=="leadership-coach") | .version')
+          new_marketplace_version=$(jq -r '.plugins[] | select(.name=="leadership-coach") | .version' .claude-plugin/marketplace.json)
+
+          fail=0
+
+          if [ "$old_plugin_version" = "$new_plugin_version" ]; then
+            echo "::error file=plugins/leadership-coach/.claude-plugin/plugin.json::leadership-coach content changed but plugin.json's version field was not bumped (still $new_plugin_version)."
+            fail=1
+          fi
+
+          if [ "$old_marketplace_version" = "$new_marketplace_version" ]; then
+            echo "::error file=.claude-plugin/marketplace.json::leadership-coach content changed but marketplace.json's leadership-coach version was not bumped (still $new_marketplace_version)."
+            fail=1
+          fi
+
+          if [ "$fail" -eq 1 ]; then
+            echo "Both plugins/leadership-coach/.claude-plugin/plugin.json and the leadership-coach entry in .claude-plugin/marketplace.json must have their version bumped together on every content release."
+            exit 1
+          fi
+
+          echo "Version bump check passed."
