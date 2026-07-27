@@ -1,0 +1,10 @@
+{
+  "name": "order-splitter",
+  "version": "1.2.1",
+  "description": "Redistributes Viewrail order dollars across Terminal shipments end-to-end (fresh split or change-order repush), reconciled to the active quote, behind one PM confirmation gate.",
+  "author": {
+    "name": "Alex Stout",
+    "email": "alex.stout@viewrail.com"
+  },
+  "keywords": ["viewrail", "terminal", "order-split", "project-management"]
+}

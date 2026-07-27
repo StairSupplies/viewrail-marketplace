@@ -10,6 +10,13 @@
       "description": "A coaching partner for Viewrail leaders. Prepare for difficult conversations, build change narratives, practice through role play, and develop your team, all grounded in the six Leadership Performance Drivers.",
       "version": "0.1.0",
       "keywords": ["leadership", "coaching", "viewrail", "performance", "development"]
+    },
+    {
+      "name": "order-splitter",
+      "source": "./plugins/order-splitter",
+      "description": "Redistributes Viewrail order dollars across Terminal shipments end-to-end (fresh split or change-order repush), reconciled to the active quote, behind one PM confirmation gate.",
+      "version": "1.2.1",
+      "keywords": ["viewrail", "terminal", "order-split", "project-management"]
     }
   ]
 }
