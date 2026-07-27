@@ -57,3 +57,4 @@ No additional setup or configuration required. Install and start coaching.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1.0 | — | Initial version |
+
