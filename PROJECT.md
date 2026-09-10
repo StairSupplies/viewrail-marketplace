@@ -21,8 +21,6 @@ Adding the marketplace is a one-time step per user; Claude Code then checks it i
 | `order-splitter` | 1.2.1 | Alex Stout | Redistributes order dollars across Terminal shipments, reconciled to the active quote, behind one PM confirmation gate |
 | `viewrail-claude-starter` | 0.3.1 | Garrett Ledbetter | Workspace setup skills: `personalize`, `adopt-standard`, `audit-workspace` |
 
-`plugins/a3-problem-solving/` (0.1.0) is in the tree but not in `marketplace.json`; it was trimmed from the published catalog and is installed manually per its own README until it is re-listed.
-
 ## Release rule
 
 Claude Code detects a plugin update only when its resolved `version` changes. Content changed without a version bump silently never reaches anyone who already installed it. On every content change to a published plugin, bump `version` in both places together:
